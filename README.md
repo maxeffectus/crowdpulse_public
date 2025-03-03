@@ -30,7 +30,7 @@ CrowdPulse is tailored for venue managers, event organizers, speakers, and educa
 4. Powerful Mediaserver **REST API** and its **documentaion** allowed to integrate more with the Nx ecosystem.   
 
 # Demo Virtual Machine
-We've prepaired pre-configured a demonstration VM that you can download [HERE](https://drive.google.com/file/d/1Vcr7yhv5MgFURlRo-QbKZ11uZLc69pRV/view?usp=sharing) (requires VirtualBox)
+We've prepaired pre-configured a demonstration VM that you can download [HERE](https://drive.google.com/file/d/1Vheewk0VIbjB0XNBJy3Oo1q81m700B7k/view?usp=drive_link) (requires VirtualBox)
 
 VM user: test
 VM password: qweasd234
