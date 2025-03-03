@@ -29,6 +29,15 @@ CrowdPulse is tailored for venue managers, event organizers, speakers, and educa
 3. **Nx AI Manager** allows easy and fast training, integration and deployment of the AI models.
 4. Powerful Mediaserver **REST API** and its **documentaion** allowed to integrate more with the Nx ecosystem.   
 
+# Demo Virtual Machine
+We've prepaired pre-configured a demonstration VM that you can download [HERE](https://drive.google.com/file/d/1Vcr7yhv5MgFURlRo-QbKZ11uZLc69pRV/view?usp=sharing) (requires VirtualBox)
+
+VM user: test
+VM password: qweasd234
+
+VMS user: admin
+VMS password: qweasd234
+
 # Build instructions
 1. Download and unpack official [NetworkOptix open-source components](https://github.com/networkoptix/nx_open) code to `~/nx_open`
 2. Install all needed prerequisites to build NetworkOptix open-source components
