@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}
+        <a href="../">Events</a> / {{ event_name }}{% endblock %}
+    </h1>
+    <title>Real-time Camera Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script> <!-- Annotation Plugin -->
+{% endblock %}
+
+{% block content %}
+    <div class="content" style="display: grid; grid-auto-rows: auto; margin: 10px">
+        <div>
+            <div style="display: grid; grid-template-columns: 1fr 3fr">
+                <div style="display: flex; align-items: center; vertical-align: auto">
+                    <img id="eventIcon" src="{{ url_for('static', filename='icons/meh_event.svg') }}" alt="Event Status" width="150">
+                </div>
+                <div style="display:block; align-items: center; vertical-align: auto">
+                    <h1>Camera Data</h1>
+                    <label for="cameraSelect">Select Camera:</label>
+                    <select id="cameraSelect">
+                        {% for camera in cameras %}
+                            {% if camera == cameras[0] %}
+                              <option value="{{ camera.id }}" selected>{{ camera.name }}</option>
+                            {% else %}
+                              <option value="{{ camera.id }}">{{ camera.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <label for="thresholdSelect">Select Threshold:</label>
+                    <input type="range" id="thresholdSelect" min="0" max="100" value="50" step="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>50</output>
+                    <button id="applyThreshold">Apply</button>
+
+                    <p id="data">Loading...</p>
+                    <p id="time">Timestamp: ...</p>
+                </div>
+            </div>
+            <canvas id="dataChart" width="400" height="200"></canvas>
+            <script type="text/javascript">
+                var webAppPort = "{{ webapp_port }}";
+            </script>
+            <!-- Chart Canvas -->
+            <script src="{{ url_for('static', filename='script.js') }}">
+            </script>
+        </div>
+    </div>
+{% endblock %}

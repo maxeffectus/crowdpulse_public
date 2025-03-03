@@ -1,0 +1,10 @@
+nx_add_server_plugin(crowdpulse_plugin
+    OPTIONAL
+    PRIVATE_LIBS
+        Qt6::Core
+        nx_sdk
+        nx_kit
+        nx_network
+        nx_utils
+        nx_vms_common
+)

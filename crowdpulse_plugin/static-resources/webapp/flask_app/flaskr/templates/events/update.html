@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}<a href="../" onclick="return confirm('Warning: unsaved changes will be lost');">Events</a> / "{{ event['name'] }}" (edit){% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name"
+      value="{{ request.form['name'] or event['name'] }}" required>
+    <div style="display: flex">
+      <div class="date-selection">
+        <label for="start">Start time</label>
+        <input type="datetime-local" name="start" id="start"
+               value="{{ request.form['start'] or event['start'].strftime('%Y-%m-%dT%H:%M') }}">
+      </div>
+      <div class="date-selection">
+        <label for="finish">End time</label>
+        <input type="datetime-local" name="finish" id="finish"
+          value="{{ request.form['finish'] or event['start'].strftime('%Y-%m-%dT%H:%M') }}">
+    </div>
+    </div>
+
+    <label for="comment">Comment</label>
+    <textarea name="comment" id="comment">{{ request.form['comment'] or event['comment'] }}</textarea>
+    <div style="display: flex; flex-flow: column">
+      <div class="cameras-selector" style="display: grid">
+        <label>Select Cameras</label>
+      {% for camera in all_cameras %}
+          {% if camera in selected_cameras %}
+            <label title="{{camera.id}}">
+              <input type="checkbox" name="cameras" value="{{ camera.as_dict() }}" checked>
+              <b>{{ camera.name }}</b> <span style="font-weight: normal">({{camera.id}})</span>
+            </label>
+          {% else %}
+            <label title="{{camera.id}}">
+              <input type="checkbox" name="cameras" value="{{ camera.as_dict() }}">
+              <b>{{ camera.name }}</b> <span style="font-weight: normal">({{camera.id}})</span>
+            </label>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <hr>
+      <div style="display:flex; flex-basis: auto; grid-template-columns: 1fr 1fr 1fr;">
+        <button type="submit" value="Save changes" class="form-action">
+          <img src="{{ url_for('static', filename='icons/save_icon.svg') }}" alt="Delete" width="50" height="50">
+        </button>
+        <form action="{{ url_for('events.delete', id_=event['id']) }}" method="post">
+          <button type="submit" class="danger form-action" value="Delete" onclick="return confirm('Are you sure?');">
+            <img src="{{ url_for('static', filename='icons/trash_bin.svg') }}" alt="Delete" width="70" height="70">
+          </button>
+        </form>
+      </div>
+    </div>
+  </form>
+  <hr>
+{% endblock %}

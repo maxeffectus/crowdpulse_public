@@ -1,0 +1,63 @@
+{
+    "id": "tigre.crowdpulse",
+    "name": "CrowdPulse Plugin",
+    "description": "Audience Engagement Monitoring And Analysis",
+    "version": "0.0.1",
+    "vendor": "Tres Tigre",
+    "engineSettingsModel": {
+        "type": "Settings",
+        "items": [
+            {
+                "type": "SpinBox",
+                "name": "webapp.port",
+                "caption": "Web Application HTTP Port",
+                "defaultValue": 14200,
+                "minValue": 0,
+                "maxValue": 65535
+            },
+            {
+                "type": "CheckBox",
+                "name": "webapp.autoRestart",
+                "caption": "Restart Web Application automatically",
+                "description": "Just in case, if something bad happens",
+                "defaultValue": true
+            },
+            {
+                "type": "Flow",
+                "caption": "Web Application",
+                "items": [
+                    {
+                        "type": "Button",
+                        "name": "webapp.open",
+                        "caption": "Open",
+                        "isActive": true
+                    },
+                    {
+                        "type": "CheckBox",
+                        "name": "webapp.useProxy",
+                        "caption": "Use proxy",
+                        "defaultValue": false
+                    }
+                ]
+            },
+            {
+                "type": "Flow",
+                "caption": "Web Application maintenance",
+                "items": [
+                    {
+                        "type": "Button",
+                        "name": "webapp.stop",
+                        "caption": "Stop",
+                        "isActive": true
+                    },
+                    {
+                        "type": "Button",
+                        "name": "webapp.restart",
+                        "caption": "Restart",
+                        "isActive": true
+                    }
+                ]
+            }
+        ]
+    }
+}

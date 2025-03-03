@@ -1,0 +1,23 @@
+{
+    "capabilities": "disableStreamSelection",
+    "typeLibrary": {
+        "eventTypes": [
+            {
+                "id": "tigre.engagementAboveLevel",
+                "name": "Engagement exceeds the target level"
+            },
+            {
+                "id": "tigre.engagementBelowLevel",
+                "name": "Engagement is below target level"
+            }
+        ]
+    },
+    "supportedTypes": [
+        {
+            "eventTypeId": "tigre.engagementAboveLevel"
+        },
+        {
+            "eventTypeId": "tigre.engagementBelowLevel"
+        }
+    ]
+}

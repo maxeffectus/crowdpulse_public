@@ -1,0 +1,32 @@
+<!doctype html>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/mini_tigre.png') }}">
+<title>{% block title %}{% endblock %} - CrowdPulse</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="site-header">
+  <div>
+    <a href="/" class="logo">
+      <img src="{{ url_for('static', filename='icons/the_best_tigre.png') }}" alt="Logo" class="big-tigre">
+      <span class="tigre-title">CrowdPulse</span>
+    </a>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding-right: 10px">
+    {% if g.user %}
+    <div>
+      <img src="{{ url_for('static', filename='icons/tigre_avatar.png') }}" alt="Avatar" class="user-avatar">
+    </div>
+    <div>
+      <h3 class="username"><span>{{ g.user['username'] }}</span></h3>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+    </div>
+      {% endif %}
+  </div>
+</div>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

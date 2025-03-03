@@ -1,0 +1,29 @@
+{
+    "type": "Settings",
+    "items":
+    [
+        {
+            "type": "Banner",
+            "icon": "info",
+            "visible": %OK_VISIBLE%,
+            "text": "Everything is set up properly!"
+        },
+        {
+            "type": "Banner",
+            "icon": "warning",
+            "visible": %AUTH_VISIBLE%,
+            "text": "Please log into CrowdPulse Web Application and refresh to proceed."
+        },
+        {
+            "type": "Banner",
+            "icon": "warning",
+            "visible": %AI_VISIBLE%,
+            "text": "Nx AI Manager not found!\nNx AI Manager is essential to CrowdPulse Plugin to work properly. Please check your mediaserver setup."
+        },
+        {
+            "type": "Link",
+            "caption": "CrowdPulse Web Application",
+            "url": "%LINK%"
+        }
+    ]
+}

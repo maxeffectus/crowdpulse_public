@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Event{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name*</label>
+    <input name="name" id="name" value="{{ request.form['name'] }}" required>
+    <label for="start">Start time</label>
+    <input type="datetime-local" name="start" id="start" value="{{ request.form['start'] }}">
+    <label for="finish">End time</label>
+    <input type="datetime-local" name="finish" id="finish" value="{{ request.form['finish'] }}">
+    <label for="comment">Comment</label>
+    <textarea name="comment" id="comment">{{ request.form['comment'] }}</textarea>
+    <label for="cameras">Select Cameras</label>
+    <select multiple name="cameras" id="cameras">
+      {% for camera in cameras %}
+        <option value="{{ camera.as_dict() }}">{{ camera.name }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Save event">
+  </form>
+  <form action="{{ url_for('events.index') }}" method="get">
+    <input type="submit" value="Cancel and return" onclick="return confirm('Warning: unsaved changes will be lost');">
+  </form>
+{% endblock %}
